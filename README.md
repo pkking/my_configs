@@ -1,4 +1,4 @@
-在debian上使用的 vimrc 配置文件
+在debian和windows上使用的 vimrc 配置文件
 
 欢迎修改使用
 
@@ -14,3 +14,5 @@
 - 括号匹配
 - 所见即所得的搜索结果
 - 配色主题：沙漠
+- backspace处于非兼容模式 即backspace可以用于删除字符
+- cscopeprg在windows下的设置说明
