@@ -1,0 +1,15 @@
+[submodule "vundle"]
+    path = nvim/bundle/Vundle.vim
+    url = https://github.com/VundleVim/Vundle.vim.git
+
+[submodule "gruvbox"]
+    path = nvim/bundle/gruvbox
+    url = https://github.com/morhetz/gruvbox.git
+
+[submodule "vim-airline"]
+    path = nvim/bundle/vim-airline
+    url = https://github.com/vim-airline/vim-airline.git
+
+[submodule "vim-airline-theme"]
+    path = nvim/bundle/vim-airline-themes
+    url = https://github.com/vim-airline/vim-airline-themes.git
