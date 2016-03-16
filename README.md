@@ -1,16 +1,21 @@
-neovim配置文件
+waaagh的配置文件
 
 
 欢迎修改使用
 
 ##特性：
+### nvim
+(neo)vim配置文件
 
 - 集成vundle
 - gruvbox主题
 - airline 状态栏
 - 支持256色
 
+### .config
+.xxx类似的配置文件
+
 ##安装
 
 - 联网
-- 将nvim目录放入`~/.config`目录，随便开启一个nvim窗口，输入`PluginInstall`安装插件
+- 运行`install.sh`
