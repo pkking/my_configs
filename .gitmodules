@@ -13,3 +13,11 @@
 [submodule "vim-airline-theme"]
     path = nvim/bundle/vim-airline-themes
     url = https://github.com/vim-airline/vim-airline-themes.git
+
+[submodule "nerdtree"]
+    path = nvim/bundle/nerdtree
+    url = https://github.com/scrooloose/nerdtree.git
+
+[submodule "nerdtree-tab"]
+    path = nvim/bundle/vim-nerdtree-tabs
+    url = https://github.com/jistr/vim-nerdtree-tabs.git

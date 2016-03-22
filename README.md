@@ -11,9 +11,7 @@ waaagh的配置文件
 - gruvbox主题
 - airline 状态栏
 - 支持256色
-
-### .config
-.xxx类似的配置文件
+- 默认开启nerdtree
 
 ##安装
 
