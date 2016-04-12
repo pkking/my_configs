@@ -10,6 +10,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'leafgarland/typescript-vim'
 
 
 call vundle#end()           
