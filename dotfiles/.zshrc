@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/lcr/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -87,7 +87,4 @@ export LS_COLORS
 alias ll='ls -l --color=auto'
 alias vi='nvim'
 alias tmux='tmux -2' 
-export http_proxy=http://proxynj.zte.com.cn:80
-export https_proxy=$http_proxy
-export no_proxy="10.0.0.0/8, localhost, 127.0.0.1, .zte.com.cn"
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
