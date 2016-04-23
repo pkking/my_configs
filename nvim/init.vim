@@ -10,17 +10,14 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'leafgarland/typescript-vim'
-
 
 call vundle#end()           
 filetype plugin indent on   
 syntax on
 set nu
 set paste
-set t_Co=256
 set laststatus=2
-let g:airline_theme="base16_3024"
 let g:nerdtree_tabs_open_on_console_startup=1
 colorscheme gruvbox
+"colorscheme xoria256
 set background=dark

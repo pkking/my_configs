@@ -29,3 +29,7 @@
 [submodule "awesome-theme"]
     path = awesome
     url = https://github.com/copycat-killer/awesome-copycats.git
+
+[submodule "powerline"]
+    path = powerline
+    url = https://github.com/powerline/powerline.git
