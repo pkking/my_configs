@@ -18,17 +18,10 @@ waaagh的配置文件
 - gruvbox主题
 - airline 状态栏
 - 支持256色
-- 默认开启nerdtree
 
 ### for tmux
-#### 依赖
 
-- powerline2
-- tmux
-
-#### 特性
-
-- 增强状态栏
+- 增强状态栏powerline
 
 ### for pip
 

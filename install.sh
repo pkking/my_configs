@@ -89,9 +89,12 @@ else
 	mv ~/.powerline ~/.powerline$timenow > /dev/null 2>&1
 fi
 ln -s "`pwd`"/powerline ~/.powerline
+# install for user
+pip install --user --editable=powerline > /dev/null 2>&1
 echo -n "install powerline conf files "
 if [ $? -eq 0 ];then
-	echo "successfully"
+	echo "successfully, please run source ~/.zshrc in zsh or relogin zsh"
 else
 	echo "failed"
 fi
+
