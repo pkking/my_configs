@@ -23,5 +23,9 @@
     url = https://github.com/jistr/vim-nerdtree-tabs.git
 
 [submodule "oh-my-zsh"]
-    path = dotfiles/.oh-my-zsh
+    path = oh-my-zsh
     url = https://github.com/robbyrussell/oh-my-zsh.git
+
+[submodule "awesome-theme"]
+    path = awesome
+    url = https://github.com/copycat-killer/awesome-copycats.git

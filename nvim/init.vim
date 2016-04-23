@@ -16,6 +16,7 @@ Plugin 'leafgarland/typescript-vim'
 call vundle#end()           
 filetype plugin indent on   
 syntax on
+set nu
 set paste
 set t_Co=256
 set laststatus=2
