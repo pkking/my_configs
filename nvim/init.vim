@@ -19,6 +19,7 @@ set t_So=256
 set paste
 set encoding=utf-8
 set laststatus=2
+let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_autoclose = 1
 let g:nerdtree_tabs_synchronize_view = 1
 colorscheme gruvbox

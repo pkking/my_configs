@@ -9,6 +9,7 @@ URxvt*.font: xft:DejaVu Sans Mono for Powerline:size=10:antialias=true,xft:WenQu
 ! for transparet setting
 URxvt.transparent: true
 URxvt.shading: 20
+urxvt*.scrollBar:  false
 !XTerm*utf8Title: true
 !XTerm*faceName: CourierScreenplay:pixelsize=14
 !XTerm*faceNameDoublesize: WenQuanYi Micro Hei Mono:pixelsize=14
@@ -78,5 +79,4 @@ URxvt*.intensityStyles: false
 Xft*dpi:                96
 Xft*antialias:          true
 Xft*hinting:            full
-URxvt*.transparent:     false
 URxvt.perl-ext-common:  clipboard
