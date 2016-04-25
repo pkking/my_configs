@@ -6,6 +6,9 @@ Xft.autohint: 1
 
 !Xft.dpi:96
 URxvt*.font: xft:DejaVu Sans Mono for Powerline:size=10:antialias=true,xft:WenQuanYi Micro Hei:size=10:antialias=true
+! for transparet setting
+URxvt.transparent: true
+URxvt.shading: 20
 !XTerm*utf8Title: true
 !XTerm*faceName: CourierScreenplay:pixelsize=14
 !XTerm*faceNameDoublesize: WenQuanYi Micro Hei Mono:pixelsize=14

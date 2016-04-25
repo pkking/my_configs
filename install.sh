@@ -1,4 +1,10 @@
 #!/bin/sh
+# first clone all the submodules
+git submodule init && git submodule update
+if [ $? -ne ];then
+	echo "fail to update all the git submodule"
+	exit 1
+fi
 timenow="`date +%Y%m%d%H%M%S`"
 mkdir -p ~/.config
 if [ -d ~/.config/nvim ] && [ -L ~/.config/nvim ]

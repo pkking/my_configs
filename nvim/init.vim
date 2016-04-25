@@ -23,3 +23,4 @@ let g:nerdtree_tabs_autoclose = 1
 let g:nerdtree_tabs_synchronize_view = 1
 colorscheme gruvbox
 set background=dark
+hi Normal ctermbg=NONE
