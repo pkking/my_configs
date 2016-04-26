@@ -1,7 +1,7 @@
 #!/bin/sh
 # first clone all the submodules
 git submodule init && git submodule update
-if [ $? -ne ];then
+if [ $? -ne 0 ];then
 	echo "fail to update all the git submodule"
 	exit 1
 fi
@@ -104,3 +104,10 @@ else
 	echo "failed"
 fi
 
+echo -n "install patched fonts "
+fonts/install.sh > /dev/null 2>&1
+if [ $? -ne 0 ];then
+	echo "failed"
+else
+	echo "successfully"
+fi
