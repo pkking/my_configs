@@ -1,7 +1,7 @@
 #!/bin/sh
 # first clone all the submodules
 git submodule init && git submodule update
-if [ $? -ne ];then
+if [ $? -ne 0 ];then
 	echo "fail to update all the git submodule"
 	exit 1
 fi
@@ -49,6 +49,18 @@ if [ $? -eq 0 ];then
 else
 	echo "failed"
 fi
+
+if [ -z "`which pip 2>/dev/null`" ];then
+	echo "install pip first"
+else
+        if [ -z "`pip show neovim 2>/dev/null`" ];then
+		echo "we are going to install neovim with pip"
+		sudo pip install neovim  > /dev/null 2>&1
+	else
+		echo "neovim already installed"
+	fi
+fi
+
 
 if [ -d ~/.vim ] && [ -L ~/.vim ];then
 	rm ~/.vim

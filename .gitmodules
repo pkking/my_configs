@@ -33,3 +33,19 @@
 [submodule "powerline"]
     path = powerline
     url = https://github.com/powerline/powerline.git
+
+[submodule "deoplete"]
+    path = nvim/bundle/deoplete.nvim
+    url = https://github.com/Shougo/deoplete.nvim.git
+
+[submodule "UltiSnips"]
+    path = nvim/bundle/UltiSnips
+    url = https://github.com/SirVer/ultisnips.git
+
+[submodule "polyglot"]
+    path = nvim/bundle/vim-polyglot
+    url = https://github.com/sheerun/vim-polyglot.git
+
+[submodule "XX-Net"]
+    path = XX-Net
+    url = https://github.com/XX-net/XX-Net.git
