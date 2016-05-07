@@ -49,3 +49,7 @@
 [submodule "XX-Net"]
     path = XX-Net
     url = https://github.com/XX-net/XX-Net.git
+
+[submodule "fonts"]
+    path = fonts
+    url = https://github.com/powerline/fonts.git

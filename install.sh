@@ -116,3 +116,10 @@ else
 	echo "failed"
 fi
 
+echo -n "install patched fonts "
+fonts/install.sh > /dev/null 2>&1
+if [ $? -ne 0 ];then
+	echo "failed"
+else
+	echo "successfully"
+fi
