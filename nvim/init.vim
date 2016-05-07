@@ -16,6 +16,7 @@ Plugin 'Shougo/deoplete.nvim'
 
 
 call vundle#end()           
+map <F2> :NERDTreeToggle<CR>
 filetype plugin indent on   
 syntax on
 set cindent

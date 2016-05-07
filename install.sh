@@ -1,6 +1,6 @@
 #!/bin/sh
 # first clone all the submodules
-git submodule init && git submodule update
+git pull && git submodule init && git submodule update --remote && git submodule foreach git pull origin master
 if [ $? -ne 0 ];then
 	echo "fail to update all the git submodule"
 	exit 1
