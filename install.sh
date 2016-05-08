@@ -1,8 +1,9 @@
 #!/bin/sh
 # first clone all the submodules
-git pull && git submodule init && git submodule update --remote && git submodule foreach git pull origin master
+echo "start updating submodules"
+git pull && git submodule init && git submodule update --remote 
 if [ $? -ne 0 ];then
-	echo "fail to update all the git submodule"
+	echo "fail to update all the submodules"
 	exit 1
 fi
 timenow="`date +%Y%m%d%H%M%S`"
@@ -13,8 +14,8 @@ then
 else
 	mv ~/.config/nvim ~/.config/nvim$timenow > /dev/null 2>&1
 fi
-ln -s "`pwd`"/nvim ~/.config/nvim
 echo -n "install neovim conf files "
+ln -s "`pwd`"/nvim ~/.config/nvim
 if [ $? -eq 0 ];then
 	echo "successfully"
 else
@@ -28,8 +29,8 @@ for f in $dotfiles;do
 	else
 		mv ~/.$f ~/.${f}$timenow > /dev/null 2>&1
 	fi
-	ln -s "`pwd`"/dotfiles/$f ~/.$f
 	echo -n "install $f conf files "
+	ln -s "`pwd`"/dotfiles/$f ~/.$f
 	if [ $? -eq 0 ];then
 		echo "successfully"
 	else
@@ -42,8 +43,8 @@ if [ -f ~/.vimrc ] && [ -L ~/.vimrc ];then
 else
 	mv ~/.vimrc ~/.vimrc$timenow > /dev/null 2>&1
 fi
-ln -s "`pwd`"/nvim/init.vim ~/.vimrc
 echo -n "install vimrc conf files "
+ln -s "`pwd`"/nvim/init.vim ~/.vimrc
 if [ $? -eq 0 ];then
 	echo "successfully"
 else
@@ -67,8 +68,8 @@ if [ -d ~/.vim ] && [ -L ~/.vim ];then
 else 
 	mv ~/.vim ~/.vim$timenow > /dev/null 2>&1
 fi
-ln -s "`pwd`"/nvim ~/.vim
 echo -n "install .vim conf files "
+ln -s "`pwd`"/nvim ~/.vim
 if [ $? -eq 0 ];then
 	echo "successfully"
 else
@@ -80,8 +81,8 @@ if [ -d ~/.config/awesome ] && [ -L ~/.config/awesome ];then
 else
 	mv ~/.config/awesome ~/.config/awesome$timenow > /dev/null 2>&1
 fi
-ln -s "`pwd`"/awesome ~/.config/awesome
 echo -n "install awesome conf files "
+ln -s "`pwd`"/awesome ~/.config/awesome
 if [ $? -eq 0 ];then
 	echo "successfully"
 else
@@ -93,8 +94,8 @@ if [ -d ~/.oh-my-zsh ] && [ -L ~/.oh-my-zsh ];then
 else
 	mv ~/.oh-my-zsh ~/.oh-my-zsh$timenow > /dev/null 2>&1
 fi
-ln -s "`pwd`"/oh-my-zsh ~/.oh-my-zsh
 echo -n "install oh-my-zsh conf files "
+ln -s "`pwd`"/oh-my-zsh ~/.oh-my-zsh
 if [ $? -eq 0 ];then
 	echo "successfully"
 else
@@ -108,8 +109,8 @@ else
 fi
 ln -s "`pwd`"/powerline ~/.powerline
 # install for user
-pip install --user --editable=powerline > /dev/null 2>&1
 echo -n "install powerline conf files "
+pip install --user --editable=powerline > /dev/null 2>&1
 if [ $? -eq 0 ];then
 	echo "successfully, please run source ~/.zshrc in zsh or relogin zsh"
 else
@@ -122,4 +123,17 @@ if [ $? -ne 0 ];then
 	echo "failed"
 else
 	echo "successfully"
+fi
+
+if [ -d ~/XX-Net ] && [ -L ~/XX-Net ];then
+	rm -/XX-Net
+else
+	mv ~/XX-Net ~/XX-Net$timenow > /dev/null 2>&1
+fi
+echo -n "install XX-Net "
+ln -s "`pwd`"/XX-Net ~/XX-Net
+if [ $? -eq 0 ];then
+	echo "successfully, run ~/XX-Net/start to launch XX-Net"
+else
+	echo "failed"
 fi

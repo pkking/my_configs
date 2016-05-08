@@ -2,5 +2,7 @@ export LANG=zh_CN.UTF-8
 xrdb -merge ~/.Xresources
 fcitx
 ~/XX-Net/start &
-export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
 exec awesome
