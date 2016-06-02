@@ -38,6 +38,14 @@
     path = nvim/bundle/deoplete.nvim
     url = https://github.com/Shougo/deoplete.nvim.git
 
+[submodule "vim-jsx"]
+    path = nvim/bundle/vim-jsx
+    url = https://github.com/mxw/vim-jsx.git
+
+[submodule "js"]
+    path = nvim/bundle/vim-javascript
+    url = https://github.com/pangloss/vim-javascript.git
+
 [submodule "UltiSnips"]
     path = nvim/bundle/UltiSnips
     url = https://github.com/SirVer/ultisnips.git
