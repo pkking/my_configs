@@ -126,7 +126,7 @@ else
 fi
 
 if [ -d ~/XX-Net ] && [ -L ~/XX-Net ];then
-	rm -/XX-Net
+	rm ~/XX-Net
 else
 	mv ~/XX-Net ~/XX-Net$timenow > /dev/null 2>&1
 fi
