@@ -88,3 +88,4 @@ alias ll='ls -l --color=auto'
 alias tmux='tmux -2'
 alias vi='nvim'
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+alias steam='LD_PRELOAD="/usr/\$LIB/libstdc++.so.6" steam'
