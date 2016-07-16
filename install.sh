@@ -1,5 +1,20 @@
 #!/bin/sh
 # first clone all the submodules
+
+install_deps() {
+	local deps="i3 dmenu neovim python python-pip zsh --noconfirm feh"
+	. /etc/os-release
+	if [ ! -z "`echo $NAME|grep 'Arch Linux'`" ];then #for archlinux
+		sudo pacman -Syy $deps --noconfirm
+		if [ $? -ne 0 ];then
+			return 1
+		fi
+	else
+		echo "auto install deps is not support your distro"
+		echo "please install $deps manually"
+		return 0
+	fi
+}
 echo "start updating submodules"
 git pull && git submodule init && git submodule update --remote 
 if [ $? -ne 0 ];then
@@ -7,6 +22,11 @@ if [ $? -ne 0 ];then
 	exit 1
 fi
 timenow="`date +%Y%m%d%H%M%S`"
+install_deps
+if [ $? -ne 0 ];then
+	echo "install deps failed"
+	exit 1
+fi
 mkdir -p ~/.config
 if [ -d ~/.config/nvim ] && [ -L ~/.config/nvim ]
 then
@@ -88,6 +108,22 @@ if [ $? -eq 0 ];then
 else
 	echo "failed"
 fi
+
+if [ -d ~/.config/i3 ] && [ -L ~/.config/i3 ];then
+	rm ~/.config/i3
+else
+	mv ~/.config/i3 ~/.config/i3$timenow > /dev/null 2>&1
+fi
+
+echo -n "install i3 conf files "
+ln -s "`pwd`"/i3 ~/.config/i3
+if [ $? -eq 0 ];then
+	echo "successfully"
+else
+	echo "failed"
+fi
+
+echo -n "install awesome conf files "
 
 if [ -d ~/.oh-my-zsh ] && [ -L ~/.oh-my-zsh ];then
 	rm ~/.oh-my-zsh
