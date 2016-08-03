@@ -24,6 +24,8 @@ filetype plugin indent on
 set foldmethod=syntax
 "打开文件是默认不折叠代码
 set foldlevelstart=99
+set textwidth=80
+set wrap
 set nu
 set t_So=256
 set encoding=utf-8
