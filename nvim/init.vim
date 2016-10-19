@@ -36,6 +36,6 @@ let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_autoclose = 1
 let g:nerdtree_tabs_synchronize_view = 1
 
-colorscheme gruvbox
-set background=dark
+colorscheme desert
+"set background=dark
 hi Normal ctermbg=NONE

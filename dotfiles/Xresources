@@ -4,7 +4,7 @@ Xft.autohint: 1
 !!xft:WenQuanYi Bitmap Song:pixelsize=14:antialias=true
 !!xft:Noto Sans CJK SC:style=Regular:pixelsize=14:antialias=true
 
-URxvt*.font: xft:DejaVu Sans Mono for Powerline:size=10:antialias=true,xft:WenQuanYi Micro Hei:size=10:antialias=true
+URxvt*.font: xft:Inconsolata for Powerline:size=13:antialias=true,xft:WenQuanYi Micro Hei:size=13:antialias=true
 ! for transparet setting
 URxvt.transparent: true
 URxvt.shading: 40
