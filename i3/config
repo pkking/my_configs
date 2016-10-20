@@ -123,7 +123,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-exec_always --no-startup-id feh --bg-scale ~/.config/i3/bartosova_aurora.jpg
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/norway_mountains_2-wallpaper-1440x900.jpg
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -154,5 +154,17 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    position top
+    status_command i3status
+    tray_output LVDS
+    colors{
+        background #232323
+        statusline #DCDCDC
+    }
 }
+exec --no-startup-id nm-applet
+exec --no-startup-id fcitx
+client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
+client.focused_inactive #333333 #5F676A #ffffff #484e50
+client.unfocused        #333333 #424242 #888888 #292d2e 
+client.urgent           #C10004 #900000 #ffffff #900000

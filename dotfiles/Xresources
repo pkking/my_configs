@@ -4,10 +4,11 @@ Xft.autohint: 1
 !!xft:WenQuanYi Bitmap Song:pixelsize=14:antialias=true
 !!xft:Noto Sans CJK SC:style=Regular:pixelsize=14:antialias=true
 
-URxvt*.font: xft:DejaVu Sans Mono for Powerline:size=10:antialias=true,xft:WenQuanYi Micro Hei:size=10:antialias=true
+#URxvt*.font: xft:Input Mono:size=10:antialias=true,xft:WenQuanYi Micro Hei:size=10:antialias=true
+URxvt*.font: xft:Inconsolata for Powerline:size=12:antialias=true,xft:WenQuanYi Micro Hei:size=12:antialias=true
 ! for transparet setting
 URxvt.transparent: true
-URxvt.shading: 40
+URxvt.shading: 20
 urxvt*.scrollBar:  false
 !XTerm*utf8Title: true
 !XTerm*faceName: CourierScreenplay:pixelsize=14
