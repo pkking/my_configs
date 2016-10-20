@@ -1,16 +1,13 @@
-#!/bin/sh
+#!/bin/sh -e
 # first clone all the submodules
 
 install_deps() {
 	local deps="i3 dmenu neovim python python-pip zsh --noconfirm feh"
 	. /etc/os-release
 	if [ ! -z "`echo $NAME|grep 'Arch Linux'`" ];then #for archlinux
-		sudo pacman -Syy $deps --noconfirm
-		if [ $? -ne 0 ];then
-			return 1
-		fi
+		echo "you are using Arch Linux, please run with pacman
+		-S $deps"
 	else
-		echo "auto install deps is not support your distro"
 		echo "please install $deps manually"
 		return 0
 	fi
@@ -58,6 +55,10 @@ for f in $dotfiles;do
 	fi
 
 done
+mkdir -p ~/.pip
+[ -f ~/.pip/pip.conf ] && mv ~/.pip/pip.conf ~/.pip/pip.conf$timenow
+[ -L ~/.pip/pip.conf ] && rm ~/.pip/pip.conf
+ln -s ~/.pip.conf dotfiles/pip.conf
 if [ -f ~/.vimrc ] && [ -L ~/.vimrc ];then
 	rm ~/.vimrc
 else
@@ -145,9 +146,11 @@ else
 fi
 ln -s "`pwd`"/powerline ~/.powerline
 # install for user
+echo "will install powerline, run pip install --user --editable=powerline and
+pip install powerline-status manually for deps"
 echo -n "install powerline conf files "
-pip install --user --editable=powerline > /dev/null 2>&1
-sudo pip install powerline-status > /dev/null 2>&1
+#pip install --user --editable=powerline > /dev/null 2>&1
+#sudo pip install powerline-status > /dev/null 2>&1
 if [ $? -eq 0 ];then
 	echo "successfully"
 else
