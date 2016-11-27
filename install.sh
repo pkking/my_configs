@@ -7,6 +7,7 @@ install_deps() {
 	if [ ! -z "`echo $NAME|grep 'Arch Linux'`" ];then #for archlinux
 		echo "you are using Arch Linux, please run with pacman
 		-S $deps"
+		return 0
 	else
 		echo "please install $deps manually"
 		return 0
@@ -58,7 +59,8 @@ done
 mkdir -p ~/.pip
 [ -f ~/.pip/pip.conf ] && mv ~/.pip/pip.conf ~/.pip/pip.conf$timenow
 [ -L ~/.pip/pip.conf ] && rm ~/.pip/pip.conf
-ln -s ~/.pip.conf dotfiles/pip.conf
+
+ln -s ~/.pip/pip.conf dotfiles/pip.conf
 if [ -f ~/.vimrc ] && [ -L ~/.vimrc ];then
 	rm ~/.vimrc
 else
