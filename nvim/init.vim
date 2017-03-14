@@ -7,14 +7,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'UltiSnips'
-Plugin 'sheerun/vim-polyglot'
 Plugin 'Shougo/deoplete.nvim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 
 call vundle#end()           
 set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
