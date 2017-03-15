@@ -1,3 +1,5 @@
 *.swp
+NeoBundle.lock
+.neobundle
 .init.vim-rplugin~
 .netrwhist
