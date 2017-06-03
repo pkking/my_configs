@@ -3,3 +3,4 @@ NeoBundle.lock
 .neobundle
 .init.vim-rplugin~
 .netrwhist
+.cache
