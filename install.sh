@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh 
 # first clone all the submodules
 
 install_deps() {
@@ -19,67 +19,58 @@ if [ $? -ne 0 ];then
 	echo "fail to update all the submodules"
 	exit 1
 fi
+
+function print_result() {
+	name="$1"
+	local res
+	if [ $? -eq 0 ];then
+		res="\e[92msuccessfully\e[0m"
+	else
+		res="\e[91mfailed\e[0m"
+	fi
+	printf "install %-30s %b\n" "$name" $res
+}
+
 timenow="`date +%Y%m%d%H%M%S`"
-install_deps
-if [ $? -ne 0 ];then
-	echo "install deps failed"
-	exit 1
-fi
 mkdir -p ~/.config
-if [ -d ~/.config/nvim ] && [ -L ~/.config/nvim ]
+if  [ -L ~/.config/nvim ]
 then
 	rm ~/.config/nvim
-else
+elif [ -d ~/.config/nvim ]
+then
 	mv ~/.config/nvim ~/.config/nvim$timenow > /dev/null 2>&1
 fi
-echo -n "install neovim conf files "
 ln -s "`pwd`"/nvim ~/.config/nvim
-if [ $? -eq 0 ];then
-	echo "successfully"
-else
-	echo "failed"
-fi
+print_result "neovim conf files"
 
 dotfiles="`ls dotfiles/`"
 for f in $dotfiles;do
-	if [ -f ~/.$f ] && [ -L ~/.$f ];then
+	if [ -L ~/.$f ];then
 		rm ~/.$f
-	else
+	elif [ -f ~/.$f ];then
 		mv ~/.$f ~/.${f}$timenow > /dev/null 2>&1
 	fi
-	echo -n "install $f conf files "
 	ln -s "`pwd`"/dotfiles/$f ~/.$f
-	if [ $? -eq 0 ];then
-		echo "successfully"
-	else
-		echo "failed"
-	fi
-
+	print_result "$f files"
 done
 mkdir -p ~/.pip
 [ -f ~/.pip/pip.conf ] && mv ~/.pip/pip.conf ~/.pip/pip.conf$timenow
 [ -L ~/.pip/pip.conf ] && rm ~/.pip/pip.conf
 
-ln -s ~/.pip/pip.conf dotfiles/pip.conf
-if [ -f ~/.vimrc ] && [ -L ~/.vimrc ];then
+ln -s "`pwd`"/dotfiles/pip.conf ~/.pip/pip.conf 
+if [ -L ~/.vimrc ];then
 	rm ~/.vimrc
-else
+elif [ -f ~/.vimrc ];then 
 	mv ~/.vimrc ~/.vimrc$timenow > /dev/null 2>&1
 fi
-echo -n "install vimrc conf files "
 ln -s "`pwd`"/nvim/init.vim ~/.vimrc
-if [ $? -eq 0 ];then
-	echo "successfully"
-else
-	echo "failed"
-fi
+print_result "vim conf files"
 
 if [ -z "`which pip 2>/dev/null`" ];then
 	echo "install pip first"
 else
         if [ -z "`pip show neovim 2>/dev/null`" ];then
-		echo "we are going to install neovim with pip"
-		sudo pip install neovim  > /dev/null 2>&1
+		echo "please install neovim python by: pip install neovim"
 	else
 		echo "neovim already installed"
 	fi
@@ -91,26 +82,16 @@ if [ -d ~/.vim ] && [ -L ~/.vim ];then
 else 
 	mv ~/.vim ~/.vim$timenow > /dev/null 2>&1
 fi
-echo -n "install .vim conf files "
 ln -s "`pwd`"/nvim ~/.vim
-if [ $? -eq 0 ];then
-	echo "successfully"
-else
-	echo "failed"
-fi
+print_result "vim plugins conf files"
 
 if [ -d ~/.config/awesome ] && [ -L ~/.config/awesome ];then
 	rm ~/.config/awesome
 else
 	mv ~/.config/awesome ~/.config/awesome$timenow > /dev/null 2>&1
 fi
-echo -n "install awesome conf files "
 ln -s "`pwd`"/awesome ~/.config/awesome
-if [ $? -eq 0 ];then
-	echo "successfully"
-else
-	echo "failed"
-fi
+print_result "awesome wm conf files"
 
 if [ -d ~/.config/i3 ] && [ -L ~/.config/i3 ];then
 	rm ~/.config/i3
@@ -118,64 +99,34 @@ else
 	mv ~/.config/i3 ~/.config/i3$timenow > /dev/null 2>&1
 fi
 
-echo -n "install i3 conf files "
 ln -s "`pwd`"/i3 ~/.config/i3
-if [ $? -eq 0 ];then
-	echo "successfully"
-else
-	echo "failed"
-fi
-
-echo -n "install awesome conf files "
+print_result "i3 wm conf files"
 
 if [ -d ~/.oh-my-zsh ] && [ -L ~/.oh-my-zsh ];then
 	rm ~/.oh-my-zsh
 else
 	mv ~/.oh-my-zsh ~/.oh-my-zsh$timenow > /dev/null 2>&1
 fi
-echo -n "install oh-my-zsh conf files "
 ln -s "`pwd`"/oh-my-zsh ~/.oh-my-zsh
-if [ $? -eq 0 ];then
-	echo "successfully, please run source ~/.zshrc in zsh or relogin zsh"
-else
-	echo "failed"
-fi
+print_result "oh-my-zsh"
 
-if [ -d ~/.powerline ] && [ -L ~/.powerline ];then
+if [ -L ~/.powerline ];then
 	rm ~/.powerline
-else
+elif [ -d ~/.powerline ];then 
 	mv ~/.powerline ~/.powerline$timenow > /dev/null 2>&1
 fi
 ln -s "`pwd`"/powerline ~/.powerline
 # install for user
-echo "will install powerline, run pip install --user --editable=powerline and
-pip install powerline-status manually for deps"
-echo -n "install powerline conf files "
-#pip install --user --editable=powerline > /dev/null 2>&1
-#sudo pip install powerline-status > /dev/null 2>&1
-if [ $? -eq 0 ];then
-	echo "successfully"
-else
-	echo "failed"
-fi
+echo "please install powerline by running pip install --user --editable=powerline and \
+pip install powerline-status"
 
-echo -n "install patched fonts "
 fonts/install.sh > /dev/null 2>&1
-if [ $? -ne 0 ];then
-	echo "failed"
-else
-	echo "successfully"
-fi
+print_result "powerline fonts"
 
-if [ -d ~/XX-Net ] && [ -L ~/XX-Net ];then
+if [ -L ~/XX-Net ];then
 	rm ~/XX-Net
-else
+elif [ -d ~/XX-Net ];then
 	mv ~/XX-Net ~/XX-Net$timenow > /dev/null 2>&1
 fi
-echo -n "install XX-Net "
 ln -s "`pwd`"/XX-Net ~/XX-Net
-if [ $? -eq 0 ];then
-	echo "successfully, run ~/XX-Net/start to launch XX-Net"
-else
-	echo "failed"
-fi
+print_result "XX-Net"
