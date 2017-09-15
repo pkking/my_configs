@@ -11,7 +11,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Better file browser
-Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree', { 'on': ['NERDTreeMirrorToggle', 'NERDTreeTabsToggle', 'NERDTreeTabsFind', 'NERDTreeToggle', 'NERDTreeFind'] }
+Plugin 'jistr/vim-nerdtree-tabs'
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -44,7 +45,6 @@ set foldlevelstart=99
 "set textwidth=80
 "set wrap
 set nu
-let &t_Co=256
 set encoding=utf-8
 set laststatus=2
 
@@ -53,22 +53,16 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
-" auto open or close NERDTree
-autocmd vimenter * NERDTree
-" focus on file buffer
-autocmd VimEnter * wincmd p
-" open nerdtree buffer on each tab
-autocmd BufWinEnter * NERDTreeMirror
-" auto close nerdtree buf when no file left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
+let NERDTreeTabsToggle=1
 let NERDTreeShowFiles=1
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_focus_on_files=1
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup=0
 " Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup=1
 let g:airline_theme='luna'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 
 
 " NERDTree ----------------------------- 
@@ -81,11 +75,4 @@ nmap ,t :NERDTreeFind<CR>
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 let NERDTreeQuitOnOpen=1
 
-if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
-    let &t_Co=256
-    colorscheme monokai
-else
-    colorscheme desert
-endif
-
-hi Normal ctermbg=NONE
+colorscheme desert
