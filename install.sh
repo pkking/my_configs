@@ -117,7 +117,7 @@ elif [ -d ~/.powerline ];then
 fi
 ln -s "`pwd`"/powerline ~/.powerline
 # install for user
-echo "please install powerline by running pip install --user --editable=powerline and \
+echo "please install powerline by running: sudo pip install --user --editable=powerline and \
 pip install powerline-status"
 
 fonts/install.sh > /dev/null 2>&1
