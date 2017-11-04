@@ -53,7 +53,7 @@ plugins=(git autojump)
 
 # User configuration
 
-export PATH="`echo ~`/.local/bin:$PATH:`echo ~`/.gem/ruby/2.3.0/bin"
+export PATH="`echo ~`/.cargo/bin:`echo ~`/.local/bin:$PATH:`echo ~`/.gem/ruby/2.3.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
