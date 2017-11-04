@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash
 # first clone all the submodules
 
 install_deps() {
