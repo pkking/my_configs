@@ -85,6 +85,9 @@ fi
 ln -s "`pwd`"/nvim ~/.vim
 print_result "vim plugins conf files"
 
+vim +PluginInstall +qall
+print_result "vim plugins"
+
 if [ -d ~/.config/awesome ] && [ -L ~/.config/awesome ];then
 	rm ~/.config/awesome
 else
