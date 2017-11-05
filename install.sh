@@ -123,6 +123,9 @@ ln -s "`pwd`"/powerline ~/.powerline
 echo "please install powerline by running: pip install --user --editable=powerline && \
 pip install powerline-status"
 
+wget http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf -O ~/.local/share/fonts/Monaco.ttf > /dev/null 2>&1
+print_result "monaco fonts"
+
 fonts/install.sh > /dev/null 2>&1
 print_result "powerline fonts"
 
