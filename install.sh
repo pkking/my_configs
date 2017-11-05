@@ -68,12 +68,12 @@ print_result "vim conf files"
 
 if [ -z "`which pip 2>/dev/null`" ];then
 	echo "install pip first"
+	exit 1
+elif [ -z "`pip show neovim 2>/dev/null`" ];then
+	pip install --user neovim -q
+	print_result "neovim python bindings"
 else
-        if [ -z "`pip show neovim 2>/dev/null`" ];then
-		echo "please install neovim python by: pip install neovim"
-	else
-		echo "neovim already installed"
-	fi
+	echo "neovim already installed"
 fi
 
 
@@ -119,9 +119,10 @@ elif [ -d ~/.powerline ];then
 	mv ~/.powerline ~/.powerline$timenow > /dev/null 2>&1
 fi
 ln -s "`pwd`"/powerline ~/.powerline
+print_result "powerline"
 # install for user
-echo "please install powerline by running: pip install --user --editable=powerline && \
-pip install powerline-status"
+pip install --user wheel -q && pip install --user --editable=powerline -q && pip install --user powerline-status -q
+print_result "powerline python bindings"
 
 wget http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf -O ~/.local/share/fonts/Monaco.ttf > /dev/null 2>&1
 print_result "monaco fonts"
