@@ -12,7 +12,7 @@
 TBD
 
 # HOW TO INSTALL
-make sure bash, git, pip is installed, run:
+make sure bash, git, pip are installed, run:
 ```bash
 chmod +x install.sh && ./install.sh
 ```
