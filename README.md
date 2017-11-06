@@ -1,4 +1,4 @@
-#　WAAAGH's linux dev env
+# WAAAGH's linux dev env
 
 # WHAT WE GOT
 my i3wm config
