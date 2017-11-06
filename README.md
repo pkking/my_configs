@@ -17,4 +17,5 @@ make sure bash, git, pip are installed, run:
 chmod +x install.sh && ./install.sh
 ```
 feel free to email me or commit a issue
+
 have fun :)
