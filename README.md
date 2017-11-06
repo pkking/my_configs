@@ -1,12 +1,12 @@
 # WAAAGH's linux dev env
 
 # WHAT WE GOT
-my i3wm config
-my awesome wm config
-my neovim/vim config and plugins
-XX-Net for ...
-powerline for vim, tmux, fonts
-a steam launch script
+- my i3wm config
+- my awesome wm config
+- my neovim/vim config and plugins
+- XX-Net for great good
+- powerline for vim, tmux, fonts
+- a steam launch script
 
 # SCREENSHOT
 TBD
