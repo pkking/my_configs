@@ -72,8 +72,6 @@ if [ -z "`which pip 2>/dev/null`" ];then
 elif [ -z "`pip show neovim 2>/dev/null`" ];then
 	pip install --user neovim -q
 	print_result "neovim python bindings"
-else
-	echo "neovim already installed"
 fi
 
 
@@ -85,7 +83,15 @@ fi
 ln -s "`pwd`"/nvim ~/.vim
 print_result "vim plugins conf files"
 
-vim +PluginInstall +qall
+if [ ! -z "$(which vim 2>/dev/null)" ];then
+	VI="vim"
+elif [ ! -z "$(which nvim 2>/dev/null)" ];then
+	VI="nvim"
+else
+	echo "please install vim or neovim first"
+	exit 1
+fi
+$VI +PluginInstall +qall --headless >/dev/null 2>&1
 print_result "vim plugins"
 
 if [ -d ~/.config/awesome ] && [ -L ~/.config/awesome ];then
