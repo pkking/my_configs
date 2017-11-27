@@ -85,14 +85,19 @@ print_result "vim plugins conf files"
 
 if [ ! -z "$(which vim 2>/dev/null)" ];then
 	VI="vim"
-elif [ ! -z "$(which nvim 2>/dev/null)" ];then
+	mkdir -p ~/.vim
+	ln -s `pwd`/nvim/bundle ~/.vim/bundle
+	$VI +PluginInstall +qall --headless >/dev/null 2>&1
+	print_result "vim plugins"
+fi
+if [ ! -z "$(which nvim 2>/dev/null)" ];then
 	VI="nvim"
-else
+elif [ -z $VI ];then
 	echo "please install vim or neovim first"
 	exit 1
 fi
 $VI +PluginInstall +qall --headless >/dev/null 2>&1
-print_result "vim plugins"
+print_result "neovim plugins"
 
 if [ -d ~/.config/awesome ] && [ -L ~/.config/awesome ];then
 	rm ~/.config/awesome
