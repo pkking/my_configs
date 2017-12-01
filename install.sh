@@ -87,7 +87,7 @@ if [ ! -z "$(which vim 2>/dev/null)" ];then
 	VI="vim"
 	mkdir -p ~/.vim
 	ln -s `pwd`/nvim/bundle ~/.vim/bundle
-	$VI +PluginInstall +qall --headless >/dev/null 2>&1
+	$VI +PluginInstall +qall >/dev/null 2>&1
 	print_result "vim plugins"
 fi
 if [ ! -z "$(which nvim 2>/dev/null)" ];then
