@@ -20,7 +20,7 @@ if [ $? -ne 0 ];then
 	exit 1
 fi
 
-function print_result() {
+print_result() {
 	name="$1"
 	local res
 	if [ $? -eq 0 ];then
@@ -140,11 +140,3 @@ print_result "monaco fonts"
 
 fonts/install.sh > /dev/null 2>&1
 print_result "powerline fonts"
-
-if [ -L ~/XX-Net ];then
-	rm ~/XX-Net
-elif [ -d ~/XX-Net ];then
-	mv ~/XX-Net ~/XX-Net$timenow > /dev/null 2>&1
-fi
-ln -s "`pwd`"/XX-Net ~/XX-Net
-print_result "XX-Net"
