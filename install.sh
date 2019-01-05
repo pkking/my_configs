@@ -132,7 +132,7 @@ fi
 ln -s "`pwd`"/powerline ~/.powerline
 print_result "powerline"
 # install for user
-pip install --user wheel -q && pip install --user --editable=powerline -q && pip install --user powerline-status -q
+pip install --user wheel -q && pip install setuptools -q && pip install --user --editable=powerline -q && pip install --user powerline-status -q
 print_result "powerline python bindings"
 
 wget http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf -O ~/.local/share/fonts/Monaco.ttf > /dev/null 2>&1
