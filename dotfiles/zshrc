@@ -94,6 +94,3 @@ alias steam='LD_PRELOAD="/usr/\$LIB/libstdc++.so.6" steam'
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 which go > /dev/null 2>&1 && export PATH=$PATH:$(go env GOPATH)/bin
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx

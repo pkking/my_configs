@@ -32,7 +32,11 @@ URxvt*termName: rxvt-unicode
 
 URxvt*.intensityStyles: false
 Xft*dpi:                128
-Xft*hinting:            full
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
 
 ! Molokai theme
 URxvt*background: #101010
