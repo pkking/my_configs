@@ -2,23 +2,21 @@
 # first clone all the submodules
 
 install_deps() {
-	local deps="i3 dmenu neovim python python-pip zsh --noconfirm feh"
+	local deps="i3 dmenu neovim python python-pip fish --noconfirm feh"
 	. /etc/os-release
 	if [ ! -z "`echo $NAME|grep 'Arch Linux'`" ];then #for archlinux
 		echo "you are using Arch Linux, please run with pacman
 		-S $deps"
 		return 0
+	elif [ ! -z "`echo $NAME|grep 'openEuler'`" ];then
+		echo "you are using openEuler, Try to install dependency..."
+		dnf in i3 dmenu vim python3 python3-pip fish -y
+		return $?
 	else
 		echo "please install $deps manually"
 		return 0
 	fi
 }
-echo "start updating submodules"
-git pull && git submodule init && git submodule update --remote 
-if [ $? -ne 0 ];then
-	echo "fail to update all the submodules"
-	exit 1
-fi
 
 print_result() {
 	name="$1"
@@ -30,6 +28,16 @@ print_result() {
 	fi
 	printf "install %-30s %b\n" "$name" $res
 }
+
+############ main ###############
+echo "start updating submodules"
+git pull && git submodule init && git submodule update --remote 
+if [ $? -ne 0 ];then
+	echo "fail to update all the submodules"
+	exit 1
+fi
+
+install_deps
 
 timenow="`date +%Y%m%d%H%M%S`"
 mkdir -p ~/.config
@@ -116,14 +124,6 @@ fi
 ln -s "`pwd`"/i3 ~/.config/i3
 print_result "i3 wm conf files"
 
-if [ -d ~/.oh-my-zsh ] && [ -L ~/.oh-my-zsh ];then
-	rm ~/.oh-my-zsh
-else
-	mv ~/.oh-my-zsh ~/.oh-my-zsh$timenow > /dev/null 2>&1
-fi
-ln -s "`pwd`"/oh-my-zsh ~/.oh-my-zsh
-print_result "oh-my-zsh"
-
 if [ -L ~/.powerline ];then
 	rm ~/.powerline
 elif [ -d ~/.powerline ];then 
@@ -132,11 +132,10 @@ fi
 ln -s "`pwd`"/powerline ~/.powerline
 print_result "powerline"
 # install for user
-pip install --user wheel -q && pip install setuptools -q && pip install --user --editable=powerline -q && pip install --user powerline-status -q
-print_result "powerline python bindings"
-
-wget http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf -O ~/.local/share/fonts/Monaco.ttf > /dev/null 2>&1
-print_result "monaco fonts"
+if [ "`which pip`" ];then
+	pip install --user wheel -q && pip install setuptools -q && pip install --user --editable=powerline -q && pip install --user powerline-status -q
+	print_result "powerline python bindings"
+fi
 
 fonts/install.sh > /dev/null 2>&1
 print_result "powerline fonts"
