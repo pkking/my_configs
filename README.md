@@ -4,9 +4,8 @@
 - my i3wm config
 - my awesome wm config
 - my neovim/vim config and plugins
-- XX-Net for great good
-- powerline for vim, tmux, fonts
-- a steam launch script
+- powerline for vim, tmux
+- nerd fonts
 
 # SCREENSHOT
 TBD
@@ -14,7 +13,8 @@ TBD
 # HOW TO INSTALL
 make sure bash, git, pip are installed, run:
 ```bash
-chmod +x install.sh && ./install.sh
+pip install --user ansible
+ansible-playbook playbook.yaml
 ```
 feel free to email me or commit a issue
 
