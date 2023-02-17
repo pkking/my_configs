@@ -11,6 +11,15 @@
         mode: '0644'
       when: ansible_facts['distribution'] == "openEuler"
 
+  - name: "save real name"
+    hosts: localhost
+    connection: local 
+    tasks:
+    - name: "save real name"
+      ansible.builtin.shell:
+        cmd: whoami
+      register: real_name
+
   - name: "Custom a waaagh workspace"
     hosts: localhost
     connection: local 
@@ -23,6 +32,18 @@
           - git
           - python-pip
           - vim
+          - fish
+
+    - name: Set default shell to fish
+      ansible.builtin.user:
+        name: "{{ real_name.stdout }}"
+        shell: /usr/bin/fish
+
+    - name: "save fish version"
+      ansible.builtin.shell:
+        cmd: fish -v | grep -oE '[0-9.]+'
+      register: fish_versioin
+
 
     - name: Install my editor
       ansible.builtin.package:
@@ -39,9 +60,16 @@
           - i3lock
           - i3blocks
           - dmenu
+          - lightdm
+
+    - name: Install the latest version of more extra packages
+      ansible.builtin.package:
+        state: latest
+        name: 
           - xorg-x11-server
           - xorg-x11-drv-*
           - google-noto-cjk-fonts
+      when: ansible_facts['distribution'] == "openEuler"
 
   - name: "install good look nerd fonts"
     hosts: localhost
@@ -101,11 +129,28 @@
 
     - name: install tide
       ansible.builtin.shell:
-        cmd: fisher install IlanCosman/tide
+        cmd: fisher install IlanCosman/tide@v5.0.1
         executable: /bin/fish
+      when: fish_versioin.stdout is version('3.3.1', '==')
 
-    - name: Set default shell to fish
-      ansible.builtin.user:
-        name: "{{ ansible_user_id }}"
-        shell: /usr/bin/fish
+    - name: install tide
+      ansible.builtin.shell:
+        cmd: fisher install IlanCosman/tide@v5.3.0
+        executable: /bin/fish
+      when: fish_versioin.stdout is version('3.4.1', '<=') and fish_versioin.stdout is version('3.4.0', '>=')
+
+
+    - name: install tide
+      ansible.builtin.shell:
+        cmd: fisher install IlanCosman/tide@v5.4.0
+        executable: /bin/fish
+      when: fish_versioin.stdout is version('3.5.0', '<=') and fish_versioin.stdout is version('3.5.1', '>=')
+
+    - name: install tide
+      ansible.builtin.shell:
+        cmd: fisher install IlanCosman/tide@v5
+        executable: /bin/fish
+      when: fish_versioin.stdout is version('3.5.1', '>')
+
+
 
